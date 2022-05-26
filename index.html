@@ -126,7 +126,7 @@
             Door
         </h2>
         <p class="state">Lock State : <span id="state">%STATE%</span></p>
-        <p><button id="button" class="button">Open</button></p>
+        <p><button id="button" onclick="playSound('Car Unlock Sound.mp3');" class="button">Open</button></p>
         <p><button
                 id="light-mode"
                 class="light-mode"
@@ -176,9 +176,14 @@
     function toggle(){
         websocket.send('toggle');
     }
+    function playSound(url) {
+  const audio = new Audio(url);
+  audio.play();
+}
     function myFunction() {
         let element = document.body;
         let element2 = document.head;
+        localStorage.setItem("light-mode", selectedSheet);
 
         element.classList.toggle('light-mode');
         element2.classList.toggle('light-mode');
